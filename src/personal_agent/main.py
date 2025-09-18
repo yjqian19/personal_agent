@@ -11,12 +11,14 @@ def run():
     """
     Run the crew with CLI input for meal inspiration.
     """
-    parser = argparse.ArgumentParser(description="Personal Agent - Meal Planning and Grocery List Generator")
+    parser = argparse.ArgumentParser(
+        description="Personal Agent - Meal Planning and Grocery List Generator"
+    )
     parser.add_argument(
         "inspiration",
         nargs="?",
         default="Want to eat noodles. Want one meal to eat fish. Want a tomato and eggs. Less sugar, less sauce.",
-        help="Meal inspiration input, e.g.: 'Want to eat noodles.'"
+        help="Meal inspiration input, e.g.: 'Want to eat noodles.'",
     )
 
     args = parser.parse_args()
