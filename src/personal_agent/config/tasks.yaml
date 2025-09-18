@@ -2,7 +2,7 @@ plan_meals:
   description: >
     Input is a simple inspiration text with food preferences or requests.
     Examples: "Want to eat noodles?", "Want one meal to eat fish?", "Want a tomato and eggs? Less sugar, less sauce."
-    Create a 3-day meal plan (Breakfast, Lunch, Dinner; optional Snack).
+    Create today's meal plan (Breakfast, Lunch, Dinner; optional Snack).
     Rules: balanced, low oil/salt; reuse ingredients; respect preferences mentioned in inspiration;
     assume pantry staples (salt, sugar, soy sauce, vinegar, pepper, oil).
 
@@ -10,41 +10,36 @@ plan_meals:
     Use proper Markdown formatting with headers, lists, and clear structure.
     Return in EXACTLY this format:
 
-    # 3-Day Meal Plan
+    # Today's Meal Plan
 
-    ## Day 1
     **Breakfast: <meal_name>**
 
-    - Ingredients: <item qty, ...>
+    - <item qty, ...>
 
     **Lunch: <meal_name>**
 
-    - Ingredients: <item qty, ...>
+    - <item qty, ...>
 
     **Dinner: <meal_name>**
 
-    - Ingredients: <item qty, ...>
+    - <item qty, ...>
 
     **Snack: <snack_name>**
 
-    - Ingredients: <item qty, ...>
+    - <item qty, ...>
 
-    ## Day 2
-    [Same structure as Day 1]
+    <End of meal plan>
 
-    ## Day 3
-    [Same structure as Day 1]
-
-  expected_output: "Well-structured README file with proper Markdown formatting for 3-day meal plan."
+  expected_output: "Well-structured README file with proper Markdown formatting for today's meal plan."
   agent: recipe_planner
   inputs:
     inspiration: "${inspiration}"
 
 build_grocery_list:
   description: >
-    Read the meal plan text from plan_meals and build a shopping list.
+    Read today's meal plan text from plan_meals and build a shopping list.
     Group items by: Proteins / Staples / Vegetables / Fruits / Dairy / Other.
-    Sum the same items across days; provide easy buy sizes
+    Provide easy buy sizes
     (e.g., 'chicken breast ~400g (2 pieces)'); note optional/swappable items.
     Exclude pantry staples (salt, sugar, soy sauce, vinegar, pepper, oil).
 

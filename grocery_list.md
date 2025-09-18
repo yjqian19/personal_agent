@@ -1,38 +1,28 @@
 # Grocery Shopping List
 
 ## Proteins 
-- **Eggs**: 8 pieces 
-- **Salmon**: ~200g (1 portion)
-- **Fish fillets**: ~400g (2 portions)
+- **Eggs**: 2 pieces
+- **Fish**: ~400g (can be two pieces approx 200g each)
 
 ## Staples 
-- **Noodles**: 2 portions 
-- **Whole grain bread**: 4 slices 
-- **Corn tortillas**: 2 pieces
-- **Potatoes**: 2 small
-- **Low sodium chicken broth**: 4 cups
+- **Udon Noodles**: 2 servings
 
 ## Vegetables 
-- **Tomatoes**: 8 medium size 
-- **Onions**: 1.5 (1/2 + 1/4 + 1 whole)
-- **Mixed vegetables(on day 1 and day 3; carrots, beans, broccoli, peas, bell pepper, zucchini, cherry tomatoes)**: 2 cups 
-- **Bell pepper(for breakfast on day 2)**: 1/4th
-- **Mixed veggies for Tacos(lettuce, half tomato, 1/4 onion)**: 1 serving 
+- **Ripe Tomatoes**: 4 pieces
+- **Bell Pepper**: 1 piece
+- **Onion**: 1.5 pieces
 - **Garlic cloves**: 2 pieces
-- **Cucumber**: 1/2 
-- **Carrot (for Dinner on Day 3)**: 1 whole 
+- **Cilantro leaves**: A handful
 
 ## Fruits 
-- **Mixed fruits (berries, banana, apple)**: 1 cup 
+- N/A 
 
 ## Dairy 
-- (none)
+- N/A
 
 ## Other 
-- (none)
+- N/A
 
 ## Notes 
-- Pantry staples not included (salt, sugar, soy sauce, vinegar, pepper, oil) 
-- Eggs can be swapped with tofu for a vegan option. 
-- Mixed vegetables can vary based on personal preference and seasonality. 
+- Pantry staples are not included (salt, sugar, soy sauce, vinegar, pepper, oil)
 - Items marked with * are optional or swappable
