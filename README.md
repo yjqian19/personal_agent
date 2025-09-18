@@ -1,54 +1,49 @@
-# PersonalAgent Crew
+# PersonalAgent - Meal Planning Assistant
 
-Welcome to the PersonalAgent Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+As someone who loves grocery shopping and cooking, I wanted to create an AI agent that could represent my passion for meal planning and food preparation.
 
-## Installation
+## What This Project Does
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+This project takes your fragmented food inspirations as input and creates a nutritionally balanced daily meal plan, then generates an organized shopping list. Simply provide some food hints or preferences, and the system will first create a complete day's menu with balanced nutrition, then produce a shopping list for all the ingredients needed.
 
-First, if you haven't already, install uv:
+#### Input
 
+Provide fragmented food inspirations or hints, such as:
+- "Want one meal fish and one meal noodles"
+- "Want healthy meals with chicken and vegetables"
+- "Want to try Asian cuisine today"
+
+#### Output
+
+The system works in two steps:
+1. **Creates a nutritionally balanced daily meal plan** - `meal_plan.md` with complete breakfast, lunch, dinner, and optional snack
+2. **Generates an organized shopping list** - `grocery_list.md` with all ingredients grouped by categories
+
+## Example
+
+For input "Want one meal fish and one meal noodles", the system generates `meal_plan.md` and `grocery_list.md` in the root folder. Feel free to check them out. The input is conducted using CLI. My command is:
 ```bash
-pip install uv
+uv run python src/personal_agent/main.py "want one meal fish and one meal nooodles"
 ```
 
-Next, navigate to your project directory and install the dependencies:
+## Agent Framework
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+**Recipe Planner**: Takes your fragmented food inspirations and creates a complete, nutritionally balanced daily meal plan with breakfast, lunch, dinner, and optional snack.
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+**Grocery List Builder**: Analyzes the meal plan and generates an organized shopping list with proper quantities, grouped by food categories for easy shopping.
 
-- Modify `src/personal_agent/config/agents.yaml` to define your agents
-- Modify `src/personal_agent/config/tasks.yaml` to define your tasks
-- Modify `src/personal_agent/crew.py` to add your own logic, tools and specific args
-- Modify `src/personal_agent/main.py` to add custom inputs for your agents and tasks
 
-## Running the Project
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+## Reflection
 
-```bash
-$ crewai run
-```
+Through this project, I learned that CrewAI is a complete agent framework that abstracts many steps for using large language models, allowing us to simply use this framework to create very complete workflows. This project has great potential for further development. Future enhancements could include:
 
-This command initializes the personal_agent Crew, assembling the agents and assigning them tasks as defined in your configuration.
+- **Nutritional Database Integration**: Connect to a comprehensive healthy food database to ensure each meal is nutritionally balanced and suitable for different age groups.
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+- **Price Comparison Agent**: Add a third agent that compares product prices across different markets and stores to create an optimized buying plan that saves money while maintaining quality.
 
-## Understanding Your Crew
+These improvements would transform the system from a simple meal planner into a comprehensive nutrition and shopping optimization tool.
 
-The personal_agent Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+---
 
-## Support
-
-For support, questions, or feedback regarding the PersonalAgent Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+**P.S.** Instead of using `requirements.txt`, I chose to use `pyproject.toml` and `uv` for package management.
