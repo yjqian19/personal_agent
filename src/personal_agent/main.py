@@ -1,66 +1,41 @@
 #!/usr/bin/env python
-import sys
+import argparse
 import warnings
-
-from datetime import datetime
 
 from personal_agent.crew import PersonalAgent
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-# This main file is intended to be a way for you to run your
-# crew locally, so refrain from adding unnecessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
-
 
 def run():
     """
-    Run the crew.
+    Run the crew with CLI input for meal inspiration.
     """
-    inputs = {"topic": "AI LLMs", "current_year": str(datetime.now().year)}
+    parser = argparse.ArgumentParser(description="Personal Agent - Meal Planning and Grocery List Generator")
+    parser.add_argument(
+        "inspiration",
+        nargs="?",
+        default="Want to eat noodles. Want one meal to eat fish. Want a tomato and eggs. Less sugar, less sauce.",
+        help="Meal inspiration input, e.g.: 'Want to eat noodles.'"
+    )
+
+    args = parser.parse_args()
+
+    inputs = {"inspiration": args.inspiration}
+
+    print(f"🍽️  Meal Inspiration: {args.inspiration}")
+    print("🚀 Starting to generate 3-day meal plan and grocery list...")
+    print("-" * 50)
 
     try:
         PersonalAgent().crew().kickoff(inputs=inputs)
+        print("-" * 50)
+        print("✅ Complete! Please check the following files:")
+        print("📄 meal_plan.md - 3-day meal plan")
+        print("🛒 grocery_list.md - grocery list")
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
 
-def train():
-    """
-    Train the crew for a given number of iterations.
-    """
-    inputs = {"topic": "AI LLMs", "current_year": str(datetime.now().year)}
-    try:
-        PersonalAgent().crew().train(
-            n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs
-        )
-
-    except Exception as e:
-        raise Exception(f"An error occurred while training the crew: {e}")
-
-
-def replay():
-    """
-    Replay the crew execution from a specific task.
-    """
-    try:
-        PersonalAgent().crew().replay(task_id=sys.argv[1])
-
-    except Exception as e:
-        raise Exception(f"An error occurred while replaying the crew: {e}")
-
-
-def test():
-    """
-    Test the crew execution and returns the results.
-    """
-    inputs = {"topic": "AI LLMs", "current_year": str(datetime.now().year)}
-
-    try:
-        PersonalAgent().crew().test(
-            n_iterations=int(sys.argv[1]), eval_llm=sys.argv[2], inputs=inputs
-        )
-
-    except Exception as e:
-        raise Exception(f"An error occurred while testing the crew: {e}")
+if __name__ == "__main__":
+    run()

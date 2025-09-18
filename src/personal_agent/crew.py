@@ -21,16 +21,16 @@ class PersonalAgent:
     # If you would like to add tools to your agents, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
     @agent
-    def researcher(self) -> Agent:
+    def recipe_planner(self) -> Agent:
         return Agent(
-            config=self.agents_config["researcher"],  # type: ignore[index]
+            config=self.agents_config["recipe_planner"],  # type: ignore[index]
             verbose=True,
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def grocery_list_builder(self) -> Agent:
         return Agent(
-            config=self.agents_config["reporting_analyst"],  # type: ignore[index]
+            config=self.agents_config["grocery_list_builder"],  # type: ignore[index]
             verbose=True,
         )
 
@@ -38,16 +38,17 @@ class PersonalAgent:
     # task dependencies, and task callbacks, check out the documentation:
     # https://docs.crewai.com/concepts/tasks#overview-of-a-task
     @task
-    def research_task(self) -> Task:
+    def plan_meals(self) -> Task:
         return Task(
-            config=self.tasks_config["research_task"],  # type: ignore[index]
+            config=self.tasks_config["plan_meals"],  # type: ignore[index]
+            output_file="meal_plan.md",
         )
 
     @task
-    def reporting_task(self) -> Task:
+    def build_grocery_list(self) -> Task:
         return Task(
-            config=self.tasks_config["reporting_task"],  # type: ignore[index]
-            output_file="report.md",
+            config=self.tasks_config["build_grocery_list"],  # type: ignore[index]
+            output_file="grocery_list.md",
         )
 
     @crew

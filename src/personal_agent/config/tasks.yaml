@@ -1,17 +1,67 @@
-research_task:
+plan_meals:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    Input is a simple inspiration text with food preferences or requests.
+    Examples: "Want to eat noodles?", "Want one meal to eat fish?", "Want a tomato and eggs? Less sugar, less sauce."
+    Create a 3-day meal plan (Breakfast, Lunch, Dinner; optional Snack).
+    Rules: balanced, low oil/salt; reuse ingredients; respect preferences mentioned in inspiration;
+    assume pantry staples (salt, sugar, soy sauce, vinegar, pepper, oil).
+    Return plain text in EXACTLY this format:
 
-reporting_task:
+    Day 1
+    - Breakfast: <name> | Ingredients: <item qty, ...>
+    - Lunch: ...
+    - Dinner: ...
+    - Snack (optional): ...
+
+    Day 2
+    ...
+
+    Day 3
+    ...
+  expected_output: "Plain text 3-day meal plan in the format above."
+  agent: recipe_planner
+  inputs:
+    inspiration: "${inspiration}"
+
+build_grocery_list:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
-  expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    Read the meal plan text from plan_meals and build a shopping list.
+    Group items by: Proteins / Staples / Vegetables / Fruits / Dairy / Other.
+    Sum the same items across days; provide easy buy sizes
+    (e.g., 'chicken breast ~400g (2 pieces)'); note optional/swappable items.
+    Exclude pantry staples (salt, sugar, soy sauce, vinegar, pepper, oil).
+    Return plain text in EXACTLY this format:
+
+    Proteins
+    - <item>: <total/size>
+    ...
+
+    Staples
+    - <item>: <total/size>
+    ...
+
+    Vegetables
+    - <item>: <total/size>
+    ...
+
+    Fruits
+    - <item>: <total/size>
+    ...
+
+    Dairy
+    - <item>: <total/size>
+    ...
+
+    Other
+    - <item>: <total/size>
+    ...
+
+    Notes
+    - Pantry staples not included.
+    - Mention any simple swaps (e.g., banana → berries).
+  expected_output: "Plain text grouped shopping list with totals and notes."
+  agent: grocery_list_builder
+  depends_on:
+    - plan_meals
+  inputs:
+    meal_plan: "${tasks.plan_meals.output}"
