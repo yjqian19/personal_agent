@@ -5,20 +5,37 @@ plan_meals:
     Create a 3-day meal plan (Breakfast, Lunch, Dinner; optional Snack).
     Rules: balanced, low oil/salt; reuse ingredients; respect preferences mentioned in inspiration;
     assume pantry staples (salt, sugar, soy sauce, vinegar, pepper, oil).
-    Return plain text in EXACTLY this format:
 
-    Day 1
-    - Breakfast: <name> | Ingredients: <item qty, ...>
-    - Lunch: ...
-    - Dinner: ...
-    - Snack (optional): ...
+    IMPORTANT: Output should be a well-structured README file with nice formatting.
+    Use proper Markdown formatting with headers, lists, and clear structure.
+    Return in EXACTLY this format:
 
-    Day 2
-    ...
+    # 3-Day Meal Plan
 
-    Day 3
-    ...
-  expected_output: "Plain text 3-day meal plan in the format above."
+    ## Day 1
+    **Breakfast: <meal_name>**
+
+    - Ingredients: <item qty, ...>
+
+    **Lunch: <meal_name>**
+
+    - Ingredients: <item qty, ...>
+
+    **Dinner: <meal_name>**
+
+    - Ingredients: <item qty, ...>
+
+    **Snack: <snack_name>**
+
+    - Ingredients: <item qty, ...>
+
+    ## Day 2
+    [Same structure as Day 1]
+
+    ## Day 3
+    [Same structure as Day 1]
+
+  expected_output: "Well-structured README file with proper Markdown formatting for 3-day meal plan."
   agent: recipe_planner
   inputs:
     inspiration: "${inspiration}"
@@ -30,36 +47,43 @@ build_grocery_list:
     Sum the same items across days; provide easy buy sizes
     (e.g., 'chicken breast ~400g (2 pieces)'); note optional/swappable items.
     Exclude pantry staples (salt, sugar, soy sauce, vinegar, pepper, oil).
-    Return plain text in EXACTLY this format:
 
-    Proteins
-    - <item>: <total/size>
-    ...
+    IMPORTANT: Output should be a well-structured README file with nice formatting.
+    Use proper Markdown formatting with headers, lists, and clear structure.
+    Return in EXACTLY this format:
 
-    Staples
-    - <item>: <total/size>
-    ...
+    # Grocery Shopping List
 
-    Vegetables
-    - <item>: <total/size>
-    ...
+    ## Proteins
+    - **<item>**: <total/size>
+    - **<item>**: <total/size>
 
-    Fruits
-    - <item>: <total/size>
-    ...
+    ## Staples
+    - **<item>**: <total/size>
+    - **<item>**: <total/size>
 
-    Dairy
-    - <item>: <total/size>
-    ...
+    ## Vegetables
+    - **<item>**: <total/size>
+    - **<item>**: <total/size>
 
-    Other
-    - <item>: <total/size>
-    ...
+    ## Fruits
+    - **<item>**: <total/size>
+    - **<item>**: <total/size>
 
-    Notes
-    - Pantry staples not included.
-    - Mention any simple swaps (e.g., banana → berries).
-  expected_output: "Plain text grouped shopping list with totals and notes."
+    ## Dairy
+    - **<item>**: <total/size>
+    - **<item>**: <total/size>
+
+    ## Other
+    - **<item>**: <total/size>
+    - **<item>**: <total/size>
+
+    ## Notes
+    - Pantry staples not included (salt, sugar, soy sauce, vinegar, pepper, oil)
+    - Mention any simple swaps (e.g., banana → berries)
+    - Items marked with * are optional or swappable
+
+  expected_output: "Well-structured README file with proper Markdown formatting for grocery shopping list."
   agent: grocery_list_builder
   depends_on:
     - plan_meals
